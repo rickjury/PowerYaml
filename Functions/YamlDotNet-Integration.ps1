@@ -61,7 +61,9 @@ function Convert-YamlSequenceNodeToList($node) {
     foreach($yamlNode in $yamlNodes) {
         $list += Explode-Node $yamlNode
     }
-
-    return $list
+    
+    # fixes bug where it will return a string for 1 element arrays (loses 1 level of tree)
+     return ,[array]$list
+#    return $list
 }
 
